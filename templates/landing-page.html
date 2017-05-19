@@ -1,5 +1,5 @@
-<div class="row" ng-controller="landingPageController" ng-init="init()">
-    <div class="row">
+<div class="row invoice-manager-overview" ng-controller="landingPageController" ng-init="init()">
+    <div class="row system-status">
         <div class="col-md-3">
             <div class="row">
                 <div class="form-group col-md-4 col-md-offset-2">
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 state-cards">
             <div class="row">
                 <div class="col-md-3">
                     <div class="row">
@@ -50,21 +50,51 @@
                         <label class="col-md-offset-3">Processing Invoices</label>
                     </div>
                 </div>-->
-                <md-card md-theme="dark-grey" md-theme-watch>
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">Card with image</span>
-                            <span class="md-subhead">Large</span>
-                        </md-card-title-text>
-                        <md-card-title-media>
-                            <div class="md-media-lg card-media"></div>
-                        </md-card-title-media>
-                    </md-card-title>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button>Action 1</md-button>
-                        <md-button>Action 2</md-button>
-                    </md-card-actions>
-                </md-card>
+                <div class="col-md-3 state-card">
+                    <md-card md-theme="dark-grey" md-theme-watch>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Invoices Under Process</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
+                        </md-card-content>    
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button>Action 1</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+                <div class="col-md-3 state-card">
+                    <md-card md-theme="dark-orange" md-theme-watch>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Invoices Under Process</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
+                        </md-card-content>    
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button>Action 1</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+                <div class="col-md-3 state-card">
+                    <md-card md-theme="dark-purple" md-theme-watch>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Invoices Under Process</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
+                        </md-card-content>    
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button>Action 1</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>    
             </div>
             <div class="row">
                 <div class="col-md-3">

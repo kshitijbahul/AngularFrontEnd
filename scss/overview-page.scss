@@ -1,0 +1,18 @@
+.invoice-manager-overview{
+    .system-status{
+        .state-cards{
+            .state-card{
+                 md-card-content{
+                    .odometer.odometer-theme-plaza{
+                        font-size: 2em;
+                        background-color: inherit;
+                        .odometer-digit{
+                            color: white;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

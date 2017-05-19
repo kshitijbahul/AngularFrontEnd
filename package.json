@@ -28,6 +28,7 @@
     "gulp": "3.9.1",
     "gulp-clean": "0.3.2",
     "gulp-concat": "2.6.1",
+    "gulp-connect": "5.0.0",
     "gulp-sass": "3.1.0",
     "lodash": "4.17.4",
     "odometer": "0.4.8"
