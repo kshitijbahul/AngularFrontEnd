@@ -1,0 +1,34 @@
+{
+  "name": "invoicemanager",
+  "version": "0.0.1",
+  "description": "Sample Springboot Poc",
+  "main": "index.js",
+  "keywords": [
+    "invoice",
+    "manager",
+    "mvn",
+    "gulp",
+    "Fjordkraft"
+  ],
+  "author": "Kshitij Bahul",
+  "license": "ISC",
+  "dependencies": {
+    "@uirouter/angularjs": "1.0.3",
+    "angular": "1.5.8",
+    "angular-chart.js": "1.1.1",
+    "angular-odometer-js": "0.1.2",
+    "angular-route": "1.5.8",
+    "angular-ui-bootstrap": "2.5.0",
+    "body-parser": "1.17.2",
+    "express": "4.15.3",
+    "gulp": "3.9.1",
+    "gulp-clean": "0.3.2",
+    "gulp-concat": "2.6.1",
+    "gulp-sass": "3.1.0",
+    "lodash": "4.17.4",
+    "odometer": "0.4.8"
+  },
+  "scripts": {
+    "build": "gulp"
+  }
+}

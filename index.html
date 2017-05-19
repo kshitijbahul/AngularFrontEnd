@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<!-- CSS Goes here -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+<link rel="stylesheet" href="dist/css/topBanner.css" />
+<link rel="stylesheet" href="dist/css/invoice-manager-base.css" />
+<!--<link rel="stylesheet" href="node_modules/odometer/themes/odometer-theme-minimal.css" />-->
+<link rel="stylesheet" href="node_modules/odometer/themes/odometer-theme-car.css" />
+<link rel="stylesheet" href="node_modules/odometer/themes/odometer-theme-digital.css" />
+<link rel="stylesheet" href="node_modules/odometer/themes/odometer-theme-plaza.css" />
+<link rel="stylesheet" href="node_modules/odometer/themes/odometer-theme-slot-machine.css" />
+<link rel="stylesheet" href="node_modules/odometer/themes/odometer-theme-train-station.css" />
+<!-- CSS Ends here -->
+
+<!-- Dependencies Go here -->
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script src="node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+<script src="node_modules/angular-odometer-js/dist/angular-odometer.min.js"></script>
+<script src="node_modules/odometer/odometer.min.js"></script>
+<!-- Dependencies End here -->
+<script src="dist/js/app.js"></script>
+
+<body>
+    <div ng-app="invoiceManagerApp" class= "invoice-manager">
+        <div  class="top-rim" ng-controller="mainController">
+            <nav class="navbar navbar-inverse bg-brand-color">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2 brand-logo">
+                            <h1>
+                                <img class="img-responsive" src="assets/images/svg/fjordkraftlogo.svg" ui-sref="home">
+                            </h1>
+
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li><a ui-sref-active="active" ui-sref="overview">About</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div ui-view></div>
+    </div>
+
+</body>
+</html>
