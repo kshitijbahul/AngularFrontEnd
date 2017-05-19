@@ -15,7 +15,11 @@
   "dependencies": {
     "@uirouter/angularjs": "1.0.3",
     "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-aria": "1.5.8",
     "angular-chart.js": "1.1.1",
+    "angular-material": "1.1.4",
+    "angular-messages": "1.5.8",
     "angular-odometer-js": "0.1.2",
     "angular-route": "1.5.8",
     "angular-ui-bootstrap": "2.5.0",
