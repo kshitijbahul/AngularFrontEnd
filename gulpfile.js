@@ -10,6 +10,7 @@ gulp.task('sass', function(){
     console.log('In the css task',path.join(__dirname,'/dist/css'));
     return gulp.src(path.join(__dirname,'/scss/**/*.scss'))
         .pipe(sass().on('error',sass.logError))
+        .pipe(concat('app.css'))
         .pipe(gulp.dest(path.join(__dirname,'/dist/css')));
 });
 

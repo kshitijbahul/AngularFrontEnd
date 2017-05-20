@@ -1,8 +1,8 @@
 <div class="row invoice-manager-overview" ng-controller="landingPageController" ng-init="init()">
-    <div class="row system-status">
+    <div class="row current-system-status">
         <div class="col-md-3">
             <div class="row">
-                <div class="form-group col-md-4 col-md-offset-2">
+                <div class="form-group col-md-6 col-md-offset-2">
                     <label >Total Invoice</label>
                     <div>
                         <span odometer="7897643" odometer-options="{theme: 'car', duration: 3000,animation : 'count'}"/>
@@ -12,56 +12,18 @@
         </div>
         <div class="col-md-8 state-cards">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-offset-3 form-group">
-                            <label class="row">Processing Invoices</label>
-                            <div class="row">
-                                <span class="col-md-offset-2" odometer="processingInvoicesChart.data[0]" odometer-options="{theme: 'car', duration: 3000,animation : 'count'}"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--<div class="form-group">
-                        <label class="col-md-offset-3">Processing Invoices</label>
-                        <span odometer="processingInvoicesChart.data[0]" odometer-options="{theme: 'car', duration: 3000,animation : 'count'}"></span>
-                        <label class="col-md-offset-3">Processing Invoices</label>
-                    </div>-->
-
-                </div>
-                <!--<div class="col-md-3">
-                    <div class="form-group">
-                        <canvas id="processingInvoices"
-                                class="chart chart-doughnut"
-                                chart-data="processingInvoicesChart.data"
-                                chart-labels="processingInvoicesChart.labels"
-                                chart-colors="colors">
-                        </canvas>
-                        <label class="col-md-offset-3">Processing Invoices</label>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <canvas id="processingInvoices"
-                                class="chart chart-doughnut"
-                                chart-data="processingInvoicesChart.data"
-                                chart-labels="processingInvoicesChart.labels"
-                                chart-colors="colors">
-                        </canvas>
-                        <label class="col-md-offset-3">Processing Invoices</label>
-                    </div>
-                </div>-->
                 <div class="col-md-3 state-card">
                     <md-card md-theme="dark-grey" md-theme-watch>
                         <md-card-title>
                             <md-card-title-text>
-                                <span class="md-headline">Invoices Under Process</span>
+                                <span class="md-headline">Under Process</span>
                             </md-card-title-text>
                         </md-card-title>
                         <md-card-content>
                             <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                         </md-card-content>    
                         <md-card-actions layout="row" layout-align="end center">
-                            <md-button>Action 1</md-button>
+                            <md-button>View details</md-button>
                         </md-card-actions>
                     </md-card>
                 </div>
@@ -69,7 +31,7 @@
                     <md-card md-theme="dark-orange" md-theme-watch>
                         <md-card-title>
                             <md-card-title-text>
-                                <span class="md-headline">Invoices Under Process</span>
+                                <span class="md-headline">Unprocessed</span>
                             </md-card-title-text>
                         </md-card-title>
                         <md-card-content>
@@ -84,7 +46,7 @@
                     <md-card md-theme="dark-purple" md-theme-watch>
                         <md-card-title>
                             <md-card-title-text>
-                                <span class="md-headline">Invoices Under Process</span>
+                                <span class="md-headline">Failed</span>
                             </md-card-title-text>
                         </md-card-title>
                         <md-card-content>
@@ -104,7 +66,7 @@
                                 chart-data="processingInvoicesChart.data"
                                 chart-labels="processingInvoicesChart.labels">
                         </canvas>
-                        <label class="col-md-offset-3">Processing Invoices</label>
+                        <label class="col-md-offset-3">Delivered</label>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -115,7 +77,7 @@
                                 chart-labels="processingInvoicesChart.labels"
                                 chart-colors="colors">
                         </canvas>
-                        <label class="col-md-offset-3">Processing Invoices</label>
+                        <label class="col-md-offset-3">Successfully Processed</label>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -126,16 +88,16 @@
                                 chart-labels="processingInvoicesChart.labels"
                                 chart-colors="colors">
                         </canvas>
-                        <label class="col-md-offset-3">Processing Invoices</label>
+                        <label class="col-md-offset-3">Processing</label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row devinative-period-overview">
         <div class="col-md-3">
             <div class="row">
-                <div class="form-group col-md-4 col-md-offset-2">
+                <div class="form-group col-md-6 col-md-offset-2">
                     <label >Today's Invoice</label>
                     <div>
                         <span odometer="7897646" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
@@ -143,7 +105,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-4 col-md-offset-2">
+                <div class="form-group col-md-6 col-md-offset-2">
                     <label >Today's Invoice</label>
                     <div>
                         <span odometer="7897646" odometer-options="{theme: 'train-station', duration: 3000,animation : 'count'}"/>
@@ -153,7 +115,7 @@
         </div>
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <canvas id="divisionsByBrand"
                             class="chart chart-bar"
                             chart-data="divisionsByBrandChart"
@@ -161,7 +123,7 @@
                             chart-colors="colors">
                     </canvas>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-offset-2 col-md-4">
                     <canvas id="divisionsByLocation"
                             class="chart chart-pie"
                             chart-data="divisionsByLocationChart"
