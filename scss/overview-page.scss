@@ -2,16 +2,43 @@
     .current-system-status{
         .state-cards{
             .state-card{
-                 md-card-content{
-                    .odometer.odometer-theme-plaza{
-                        font-size: 2em;
-                        background-color: inherit;
-                        .odometer-digit{
-                            color: white;
-                            font-weight: bold;
+                    /***For Angular material Cards Starts***/
+                    md-card{
+                            .md-headline{
+                            font-size: 1.25em;
+                        }
+                    md-card-content{
+                        padding-bottom: 0;
+                        .odometer.odometer-theme-plaza{
+                            font-size: 3em;
+                            background-color: inherit;
+                            .odometer-digit{
+                                color: white;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                    md-card-actions{
+                        margin: 0;
+                        margin-bottom: 0;
+                    }
+                }
+                /***For Angular material Cards Ends***/
+                    /***For Bootstrap Cards Starts***/
+                .card{
+                    color: white;
+                    .card-text{
+                        .odometer.odometer-theme-plaza{
+                            font-size: 3em;
+                            background-color: inherit;
+                            .odometer-digit{
+                                color: white;
+                                font-weight: bold;
+                            }
                         }
                     }
                 }
+                /***For Bootstrap Cards Ends***/
             }
         }
     }

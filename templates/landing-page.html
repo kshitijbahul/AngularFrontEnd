@@ -11,104 +11,30 @@
             </div>
         </div>
         <div class="col-md-8 state-cards">
-            <div class="row">
-                <div class="col-md-3 state-card">
-                    <md-card md-theme="dark-grey" md-theme-watch>
-                        <md-card-title>
-                            <md-card-title-text>
-                                <span class="md-headline">Under Process</span>
-                            </md-card-title-text>
-                        </md-card-title>
-                        <md-card-content>
-                            <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-                        </md-card-content>    
-                        <md-card-actions layout="row" layout-align="end center">
-                            <md-button>View details</md-button>
-                        </md-card-actions>
-                    </md-card>
-                </div>
-                <div class="col-md-3 state-card">
-                    <md-card md-theme="dark-orange" md-theme-watch>
-                        <md-card-title>
-                            <md-card-title-text>
-                                <span class="md-headline">Unprocessed</span>
-                            </md-card-title-text>
-                        </md-card-title>
-                        <md-card-content>
-                            <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-                        </md-card-content>    
-                        <md-card-actions layout="row" layout-align="end center">
-                            <md-button>Action 1</md-button>
-                        </md-card-actions>
-                    </md-card>
-                </div>
-                <div class="col-md-3 state-card">
-                    <md-card md-theme="dark-purple" md-theme-watch>
-                        <md-card-title>
-                            <md-card-title-text>
-                                <span class="md-headline">Failed</span>
-                            </md-card-title-text>
-                        </md-card-title>
-                        <md-card-content>
-                            <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-                        </md-card-content>    
-                        <md-card-actions layout="row" layout-align="end center">
-                            <md-button>Action 1</md-button>
-                        </md-card-actions>
-                    </md-card>
-                </div>    
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <canvas id="processingInvoices"
-                                class="chart chart-doughnut"
-                                chart-data="processingInvoicesChart.data"
-                                chart-labels="processingInvoicesChart.labels">
-                        </canvas>
-                        <label class="col-md-offset-3">Delivered</label>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <canvas id="processingInvoices"
-                                class="chart chart-doughnut"
-                                chart-data="processingInvoicesChart.data"
-                                chart-labels="processingInvoicesChart.labels"
-                                chart-colors="colors">
-                        </canvas>
-                        <label class="col-md-offset-3">Successfully Processed</label>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <canvas id="processingInvoices"
-                                class="chart chart-doughnut"
-                                chart-data="processingInvoicesChart.data"
-                                chart-labels="processingInvoicesChart.labels"
-                                chart-colors="colors">
-                        </canvas>
-                        <label class="col-md-offset-3">Processing</label>
-                    </div>
-                </div>
-            </div>
+            <div ng-include="'templates/state-overview.html'"></div>          
         </div>
     </div>
     <div class="row devinative-period-overview">
         <div class="col-md-3">
             <div class="row">
                 <div class="form-group col-md-6 col-md-offset-2">
-                    <label >Today's Invoice</label>
-                    <div>
-                        <span odometer="7897646" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-                    </div>
+                    <ui-select ng-model="overview.selected" theme="select2"  title="Choose Overview Period">
+                        <ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="eachOverview in possibleOverviews | propsFilter: {name: $select.search, age: $select.search}" position='up'>
+                        <div ng-bind-html="person.name | highlight: $select.search"></div>
+                        <small>
+                            email: {{person.email}}
+                            age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                        </small>
+                        </ui-select-choices>
+                    </ui-select>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 col-md-offset-2">
                     <label >Today's Invoice</label>
                     <div>
-                        <span odometer="7897646" odometer-options="{theme: 'train-station', duration: 3000,animation : 'count'}"/>
+                        <span odometer="7897646" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                     </div>
                 </div>
             </div>
