@@ -36,7 +36,7 @@ app.controller('landingPageController',function($scope,$http,$interval){
     ]
     $scope.init = function(){
   //      console.log('colors here are ::',colors);
-        $scope.colors = ['#FF5500', '#DCDCDC','#00ADF9'];
+        $scope.colors = ['#FF5500', '#A1D490','#00ADF9','#D792E8','#2B66B3'];
         $scope.name='Kshitij';
         $scope.processingInvoicesChart ={
             data: [90,40,30,10,20],
@@ -45,7 +45,7 @@ app.controller('landingPageController',function($scope,$http,$interval){
         $scope.processedInvoicesChartLabels = ['Processed','Total'];
         //$scope.divisionsByBrandChart =[90,10];
         $scope.divisionsByBrandChart = {
-            data: [40,50,60,70,24],
+            data: [50,30,60,45,24],
             labels : ['FKAS','TKAS','BKK','FKAS','FKAS']
         };
         $scope.divisionsByBrandChartLabels = ['Processed','Total'];

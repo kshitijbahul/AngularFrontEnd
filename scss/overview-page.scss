@@ -1,13 +1,14 @@
+@import 'base';
 .invoice-manager-overview{
     .odometer.odometer-theme-plaza{
         font-size: 3em;
         .odometer-inside{
             .odometer-digit{
                 font-weight: bold;
-                color: #FF5500;
+                color: $brand-color;
             }
             .odometer-formatting-mark{
-                color: #FF5500;
+                color: $brand-color;
             }
         }
     }

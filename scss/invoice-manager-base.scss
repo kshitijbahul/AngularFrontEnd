@@ -1,5 +1,6 @@
+@import 'base';
 .bg-brand-color{
-  background-color: #FF5500;
+  background-color: $brand-color;
 }
 .bg-dark-purple-color{
   background-color: #4527a0;
@@ -12,4 +13,16 @@
 }
 .odometer.odometer-theme-plaza{
   background-color: inherit;
+}
+// .ui-select-container.open{
+//   input.form-control:focus{
+//     border-color: $brand-color;
+//   }
+// }
+.ui-select-bootstrap{ 
+  .ui-select-choices-row.active{
+    >span{
+      background-color : $brand-color;
+    }
+  }
 }
