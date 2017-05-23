@@ -1,12 +1,12 @@
 <div class="row invoice-manager-overview" ng-controller="landingPageController" ng-init="init()">
     <div class="row current-system-status">
-        <div class="col-md-3">
+        <div class="col-md-offset-1 col-md-3">
             <div class="row">
-                <div class="form-group col-md-6 col-md-offset-2">
-                    <label >Total Invoice</label>
+                <div class="form-group col-md-6 col-md-offset-2 text-center">
                     <div>
-                        <span odometer="7897643" odometer-options="{theme: 'car', duration: 3000,animation : 'count'}"/>
+                        <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                     </div>
+                    <label >Total Invoice</label>
                 </div>
             </div>
         </div>
@@ -14,47 +14,48 @@
             <div ng-include="'templates/state-overview.html'"></div>          
         </div>
     </div>
-    <div class="row devinative-period-overview">
-        <div class="col-md-3">
+    <div class="row definative-period-overview">
+        <div class="col-md-offset-1 col-md-3 overview-duration">
             <div class="row">
                 <div class="form-group col-md-6 col-md-offset-2">
-                    <ui-select  ng-model="overview.selected"  title="Choose Overview Period">
+                    <ui-select  ng-model="overview.selected" theme="bootstrap" title="Choose Overview Period">
                         <ui-select-match placeholder="Select Filter">{{$select.selected.name}}</ui-select-match>
                         <ui-select-choices  repeat="eachOverview in possibleOverviews" position='down'>
-                        <div ng-bind-html="eachOverview.name | highlight: $select.search"></div>
-                        <!--<small>
-                            email: {{eachOverview.email}}
-                            age: <span ng-bind-html="''+eachOverview.age | highlight: $select.search"></span>
-                        </small>-->
+                            <div ng-bind-html="eachOverview.name | highlight: $select.search"></div>
                         </ui-select-choices>
                     </ui-select>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-6 col-md-offset-2">
-                    <label >{{overview.selected.name}}'s Invoices</label>
+                <div class="form-group col-md-6 col-md-offset-2 text-center">
                     <div>
-                        <span odometer="7897646" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
+                        <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                     </div>
+                    <label >{{overview.selected.name}}'s Invoices</label>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 overview-graphs">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5 text-center">
                     <canvas id="divisionsByBrand"
                             class="chart chart-bar"
-                            chart-data="divisionsByBrandChart"
-                            chart-labels="divisionsByBrandChartLabels"
+                            chart-data="divisionsByBrandChart.data"
+                            chart-labels="divisionsByBrandChart.labels"
                             chart-colors="colors">
                     </canvas>
+                    <label class="row">Brands</label>
                 </div>
-                <div class="col-md-offset-2 col-md-4">
-                    <canvas id="divisionsByLocation"
-                            class="chart chart-pie"
-                            chart-data="divisionsByLocationChart"
-                            chart-labels="divisionsByLocationLabels">
-                    </canvas>
+                <div class="col-md-5 text-center">
+                    <div class="form-group">
+                        <canvas id="processingInvoices"
+                                class="chart chart-doughnut"
+                                chart-data="processingInvoicesChart.data"
+                                chart-labels="processingInvoicesChart.labels"
+                                chart-colors="colors">
+                        </canvas>
+                        <label class="row">Locations</label>
+                    </div>
                 </div>
             </div>
         </div>
