@@ -1,8 +1,8 @@
 <div class="row invoice-manager-overview" ng-controller="landingPageController" ng-init="init()">
-    <div class="row current-system-status">
-        <div class="col-md-offset-1 col-md-3">
+    <div class="row current-system-status flex-container">
+        <div class="col-md-offset-1 col-md-3 vertical-align-in-flex">
             <div class="row">
-                <div class="form-group col-md-6 col-md-offset-2 text-center">
+                <div class="col-md-12  text-center">
                     <div>
                         <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                     </div>
@@ -14,20 +14,21 @@
             <div ng-include="'templates/state-overview.html'"></div>          
         </div>
     </div>
-    <div class="row definative-period-overview">
-        <div class="col-md-offset-1 col-md-3 overview-duration">
-            <div class="row">
-                <div class="form-group col-md-6 col-md-offset-2">
-                    <ui-select  ng-model="overview.selected" theme="bootstrap" title="Choose Overview Period">
-                        <ui-select-match placeholder="Select Filter">{{$select.selected.name}}</ui-select-match>
-                        <ui-select-choices  repeat="eachOverview in possibleOverviews" position='down'>
-                            <div ng-bind-html="eachOverview.name | highlight: $select.search"></div>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-6 col-md-offset-2 text-center">
+    <hr class="section-breaker">
+    <div class="overview-duration container">
+        <div class="col-md-2 col-md-offset-5 ">
+            <ui-select  ng-model="overview.selected" theme="bootstrap" title="Choose Overview Period">
+                <ui-select-match placeholder="Select Filter">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices  repeat="eachOverview in possibleOverviews" position='down'>
+                    <div ng-bind-html="eachOverview.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <div class="row definative-period-overview flex-container">
+        <div class="col-md-offset-1 col-md-3 overview-duration-view vertical-align-in-flex">
+            <div class="row ">
+                <div class=" col-md-12  text-center">
                     <div>
                         <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                     </div>
