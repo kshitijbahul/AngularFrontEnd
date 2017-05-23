@@ -18,21 +18,21 @@
         <div class="col-md-3">
             <div class="row">
                 <div class="form-group col-md-6 col-md-offset-2">
-                    <ui-select ng-model="overview.selected" theme="select2"  title="Choose Overview Period">
-                        <ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.name}}</ui-select-match>
-                        <ui-select-choices repeat="eachOverview in possibleOverviews | propsFilter: {name: $select.search, age: $select.search}" position='up'>
-                        <div ng-bind-html="person.name | highlight: $select.search"></div>
-                        <small>
-                            email: {{person.email}}
-                            age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
-                        </small>
+                    <ui-select  ng-model="overview.selected"  title="Choose Overview Period">
+                        <ui-select-match placeholder="Select Filter">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices  repeat="eachOverview in possibleOverviews" position='down'>
+                        <div ng-bind-html="eachOverview.name | highlight: $select.search"></div>
+                        <!--<small>
+                            email: {{eachOverview.email}}
+                            age: <span ng-bind-html="''+eachOverview.age | highlight: $select.search"></span>
+                        </small>-->
                         </ui-select-choices>
                     </ui-select>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 col-md-offset-2">
-                    <label >Today's Invoice</label>
+                    <label >{{overview.selected.name}}'s Invoices</label>
                     <div>
                         <span odometer="7897646" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
                     </div>

@@ -5,6 +5,7 @@
 var app = angular.module('invoiceManagerApp');
 //const colors = require('js/utils/color');
 app.controller('landingPageController',function($scope,$http,$interval){
+    $scope.overview ={};
     $scope.init = function(){
   //      console.log('colors here are ::',colors);
         $scope.colors = ['#FF5500', '#DCDCDC','#00ADF9'];
@@ -19,6 +20,26 @@ app.controller('landingPageController',function($scope,$http,$interval){
         $scope.divisionsByLocationChart =[90,10];
         $scope.divisionsByLocationLabels = ['Processed','Total'];
     }
+    $scope.possibleOverviews = [
+        {
+            "name":"Today",
+        },
+        {
+            "name":"Last Hour"
+        },
+        {
+            "name":"Yesterday"
+        },
+        {
+            "name":"This Week"
+        },
+        {
+            "name":"This Fortnight"
+        },
+        {
+            "name":"This Month"
+        },
+    ]
     $scope.testValueChange = 123456;
     $interval(function(){
         console.log('Came in here $interval',$scope.testValueChange);
