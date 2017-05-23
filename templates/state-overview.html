@@ -1,95 +1,10 @@
 <div class="row">
-    <div class="col-md-3 state-card">
-        <md-card md-theme="dark-grey" md-theme-watch> 
-            <md-card-title layout="row">
-                <md-card-title-text layout-align="start">
-                    <span class="md-headline" layout-align="center">Under Process</span>
-                </md-card-title-text>
-                <div layout-align="end">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                </div>
-            </md-card-title>
-            <md-card-content>
-                <div> 
-                <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-                </div>
-            </md-card-content>    
-            <md-card-actions layout="row" >
-                    <md-card-title layout-align="end">
-                        <i class="fa fa-external-link" aria-hidden="true"></i>
-                    </md-card-title>
-            </md-card-actions>
-        </md-card>
-    </div>
-    <div class="col-md-3 state-card">
-        <md-card md-theme="dark-orange" md-theme-watch>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Unprocessed</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-            </md-card-content>    
-            
-        </md-card>
-    </div>
-    <div class="col-md-3 state-card">
-        <md-card md-theme="dark-purple" md-theme-watch>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Failed</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-            </md-card-content>    
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-            </md-card-actions>
-        </md-card>
-    </div>    
+    <state-card theme="processingStates[0].theme" processing-state="processingStates[0]"></state-card>
+    <state-card theme="processingStates[1].theme" processing-state="processingStates[1]"></state-card>
+    <state-card theme="processingStates[2].theme" processing-state="processingStates[2]"></state-card>   
 </div>
 <div class="row">
-    <div class="col-md-3 state-card">
-        <div class="card bg-dark-green-color">
-            <div class="card-block text-center">
-                <h4 class="card-title"> Delivered </h4>
-            </div>   
-            <div class="card-text text-center">
-                <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-            </div>
-            <div class="card-footer row text-right">
-                <div class="col-md-11">
-                    <i class="fa fa-external-link" aria-hidden="true"></i>
-                </div>   
-            </div>    
-        </div>
-    </div>
-    <div class="col-md-3 state-card">
-        <div class="card bg-dark-red-color">
-            <div class="card-block text-center">
-                <h4 class="card-title"> Delivered </h4>
-            </div>   
-            <div class="card-text text-center">
-                <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-            </div>
-            <div class="card-footer row text-right">
-                <div class="col-md-11">
-                    <i class="fa fa-external-link" aria-hidden="true"></i>
-                </div>   
-            </div>    
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="form-group">
-            <canvas id="processingInvoices"
-                    class="chart chart-doughnut"
-                    chart-data="processingInvoicesChart.data"
-                    chart-labels="processingInvoicesChart.labels"
-                    chart-colors="colors">
-            </canvas>
-            <label class="col-md-offset-3">Processing</label>
-        </div>
-    </div>
+    <state-card theme="processingStates[3].theme" processing-state="processingStates[3]"></state-card>
+    <state-card theme="processingStates[4].theme" processing-state="processingStates[4]"></state-card>
+    <state-card theme="processingStates[5].theme" processing-state="processingStates[5]"></state-card>
 </div>

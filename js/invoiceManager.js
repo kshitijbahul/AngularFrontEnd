@@ -34,5 +34,8 @@ invoiceManager.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
   $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+  $mdThemingProvider.theme('dark-red').backgroundPalette('red').dark();
+  $mdThemingProvider.theme('dark-green').backgroundPalette('green').dark();
+  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
 

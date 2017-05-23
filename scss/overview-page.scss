@@ -1,4 +1,16 @@
 .invoice-manager-overview{
+    .odometer.odometer-theme-plaza{
+        font-size: 3em;
+        .odometer-inside{
+            .odometer-digit{
+                font-weight: bold;
+                color: #FF5500;
+            }
+            .odometer-formatting-mark{
+                color: #FF5500;
+            }
+        }
+    }
     .current-system-status{
         .state-cards{
             .state-card{
@@ -11,10 +23,13 @@
                         padding-bottom: 0;
                         .odometer.odometer-theme-plaza{
                             font-size: 3em;
-                            background-color: inherit;
-                            .odometer-digit{
-                                color: white;
-                                font-weight: bold;
+                            .odometer-inside{
+                                .odometer-digit{
+                                    color: white;
+                                }
+                                .odometer-formatting-mark{
+                                    color: white;
+                                }
                             }
                         }
                     }
@@ -24,13 +39,14 @@
                     }
                 }
                 /***For Angular material Cards Ends***/
-                    /***For Bootstrap Cards Starts***/
+                /***For Bootstrap Cards Starts***/
                 .card{
                     color: white;
                     .card-text{
                         .odometer.odometer-theme-plaza{
                             font-size: 3em;
                             background-color: inherit;
+                            color: white;
                             .odometer-digit{
                                 color: white;
                                 font-weight: bold;
@@ -40,6 +56,11 @@
                 }
                 /***For Bootstrap Cards Ends***/
             }
+        }
+    }
+    .definative-period-overview{
+        .overview-graphs{
+            margin-top: 7em;
         }
     }
 }
