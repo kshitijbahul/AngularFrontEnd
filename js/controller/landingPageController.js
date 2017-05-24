@@ -7,12 +7,12 @@ var app = angular.module('invoiceManagerApp');
 app.controller('landingPageController',function($scope,$http,$interval){
     $scope.overview ={};
     $scope.processingStates=[
-        {"label":'Pending',"value":123456,"theme":"dark-grey"},
-        {"label":'Pre-Processing',"value":123456,"theme":"dark-blue"},
-        {"label":'Processing',"value":123456,"theme":"dark-orange"},
-        {"label":'Merging',"value":123456,"theme":"dark-purple"},
-        {"label":'Ready',"value":123456,"theme":"dark-green"},
-        {"label":'Failed',"value":123456,"theme":"dark-red"}
+        {"label":'Pending',"value":1234,"theme":"dark-grey"},
+        {"label":'Pre-Processing',"value":1234,"theme":"dark-blue"},
+        {"label":'Processing',"value":1234,"theme":"dark-orange"},
+        {"label":'Merging',"value":1234,"theme":"dark-purple"},
+        {"label":'Ready',"value":1234,"theme":"dark-green"},
+        {"label":'Failed',"value":1234,"theme":"dark-red"}
     ];
     $scope.possibleOverviews = [
         {
@@ -40,7 +40,8 @@ app.controller('landingPageController',function($scope,$http,$interval){
         $scope.name='Kshitij';
         $scope.processingInvoicesChart ={
             data: [90,40,30,10,20],
-            labels : ['Oslo','Bergen','Stavanger','Flekkefjord','Farsund']
+            labels : ['Oslo','Bergen','Stavanger','Flekkefjord','Farsund'],
+            options: {legend: {display: true}}
         };
         $scope.processedInvoicesChartLabels = ['Processed','Total'];
         //$scope.divisionsByBrandChart =[90,10];
@@ -54,7 +55,7 @@ app.controller('landingPageController',function($scope,$http,$interval){
         $scope.overview.selected = $scope.possibleOverviews[0];
     }
     
-    $scope.testValueChange = 123456;
+    $scope.testValueChange = 5400;
     $interval(function(){
         console.log('Came in here $interval',$scope.testValueChange);
         $scope.testValueChange = $scope.testValueChange+3;

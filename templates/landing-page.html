@@ -15,8 +15,8 @@
         </div>
     </div>
     <hr class="section-breaker">
-    <div class="overview-duration container">
-        <div class="col-md-2 col-md-offset-5 ">
+    <!--<div class="overview-duration container">
+        <div class="col-md-2 col-md-offset-6 ">
             <ui-select  ng-model="overview.selected" theme="bootstrap" title="Choose Overview Period">
                 <ui-select-match placeholder="Select Filter">{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices  repeat="eachOverview in possibleOverviews" position='down'>
@@ -24,18 +24,37 @@
                 </ui-select-choices>
             </ui-select>
         </div>
-    </div>
-    <div class="row definative-period-overview flex-container">
-        <div class="col-md-offset-1 col-md-3 overview-duration-view vertical-align-in-flex">
-            <div class="row ">
-                <div class=" col-md-12  text-center">
-                    <div>
-                        <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
-                    </div>
-                    <label >{{overview.selected.name}}'s Invoices</label>
-                </div>
-            </div>
-        </div>
+    </div>-->
+    <div class="row definative-period-overview">
+         <div class="col-md-offset-1 col-md-3 overview-duration">
+              <div class="row">
+                  <div class="form-group col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                     <ui-select  ng-model="overview.selected" theme="bootstrap" title="Choose Overview Period">
+                          <ui-select-match placeholder="Select Filter">{{$select.selected.name}}</ui-select-match>
+                          <ui-select-choices  repeat="eachOverview in possibleOverviews" position='down'>
+                             <div ng-bind-html="eachOverview.name | highlight: $select.search"></div>
+                          </ui-select-choices>
+                      </ui-select>
+                  </div>
+              </div>
+              <div class="hide-rows-small-screen">
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+              </div>
+              <div class="row">
+                 <div class="form-group col-md-6 col-md-offset-3 text-center">
+                      <div>
+                         <span odometer="testValueChange" odometer-options="{theme: 'plaza', duration: 3000,animation : 'count'}"/>
+                      </div>
+                     <label >{{overview.selected.name}}'s Invoices</label>
+                  </div>
+              </div>
+          </div>
         <div class="col-md-8 overview-graphs">
             <div class="row">
                 <div class="col-md-5 text-center">
@@ -47,13 +66,14 @@
                     </canvas>
                     <label class="row">Brands</label>
                 </div>
-                <div class="col-md-5 text-center">
+                <div class="col-md-offset-1 col-md-5 text-center">
                     <div class="form-group">
                         <canvas id="processingInvoices"
                                 class="chart chart-doughnut"
                                 chart-data="processingInvoicesChart.data"
                                 chart-labels="processingInvoicesChart.labels"
-                                chart-colors="colors">
+                                chart-colors="colors"
+                                chart-options="processingInvoicesChart.options">
                         </canvas>
                         <label class="row">Locations</label>
                     </div>
