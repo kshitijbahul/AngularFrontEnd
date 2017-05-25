@@ -13,6 +13,9 @@
 ]);*/
 var invoiceManager = angular.module('invoiceManagerApp',['ui.router','ui.bootstrap','chart.js','ui.odometer','ngMaterial','ui.select','ngSanitize']);
 
+//Configure Global Constants 
+invoiceManager.constant('_',window._);
+
 //Configure routes
 
 invoiceManager.config(function($stateProvider,$urlRouterProvider){

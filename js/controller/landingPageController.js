@@ -4,7 +4,7 @@
 'use strict';
 var app = angular.module('invoiceManagerApp');
 //const colors = require('js/utils/color');
-app.controller('landingPageController',function($scope,$http,$interval){
+app.controller('landingPageController',function($scope,$http,$interval,_){
     $scope.overview ={};
     $scope.processingStates=[
         {"label":'Pending',"value":1234,"theme":"dark-grey"},
@@ -59,5 +59,8 @@ app.controller('landingPageController',function($scope,$http,$interval){
     $interval(function(){
         console.log('Came in here $interval',$scope.testValueChange);
         $scope.testValueChange = $scope.testValueChange+3;
+        _.forEach($scope.processingStates, function(eachState){
+            return eachState.value=eachState.value+3;
+        });
     },10000)
 });
