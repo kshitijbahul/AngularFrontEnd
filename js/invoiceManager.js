@@ -2,34 +2,20 @@
  * Created by Kshitij Bahul on 16-05-2017.
  */
 'use strict';
-/*angular.module('ui.odometer').config([
-    'odometerOptionsProvider', function(odometerOptionsProvider) {
-        odometerOptionsProvider.defaults = {
-            duration : 3000,
-            theme    : 'car',
-            animation: 'count'
-        };
-    }
-]);*/
-var invoiceManager = angular.module('invoiceManagerApp',['ui.router','ui.bootstrap','chart.js','ui.odometer','ngMaterial','ui.select','ngSanitize']);
+import angular from 'angular';
+import RoutesConfig from './config/invoiceManager.config';
+import LandingPageController from './controller/landingPageController';
+import StateCard from '../components/StateCard/stateCard';
+let invoiceManager = angular.module('invoiceManagerApp',['ui.router','ui.bootstrap','chart.js','ui.odometer','ngMaterial','ui.select','ngSanitize']);
 
 //Configure Global Constants 
 invoiceManager.constant('_',window._);
 
 //Configure routes
 
-invoiceManager.config(function($stateProvider,$urlRouterProvider){
-    $stateProvider
-        .state('home',{
-            url: '/home',
-            templateUrl: 'templates/landing-page.html'
-        })
-        .state('overview',{
-            url: '/overview',
-            templateUrl: 'templates/overview.html'
-        });
-    $urlRouterProvider.otherwise('/home');
-});
+invoiceManager.config(RoutesConfig);
+invoiceManager.controller('landingPageController',LandingPageController);
+invoiceManager.component('stateCard',StateCard);
 
 //Configure Material Themes
 invoiceManager.config(function($mdThemingProvider) {

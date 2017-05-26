@@ -5,6 +5,8 @@ var concat = require('gulp-concat');
 var clean = require('gulp-clean');
 var connect = require('gulp-connect');
 var path = require('path');
+var babelify = require('babelify');
+var browserify = require('browserify');
 
 gulp.task('sass', function(){
     console.log('In the css task',path.join(__dirname,'/dist/css'));
@@ -33,8 +35,17 @@ gulp.task('cleanJsFiles',function(){
 gulp.task('combineAppJs',function(){
     console.log('In the js task',path.join(__dirname,'/dist/js'));
     return gulp.src([path.join(__dirname,'/js/**/*.js'),path.join(__dirname,'/components/**/*.js')])
+        .pipe(browserify({insertGlobals: true}))
+        .pipe(babel())
         .pipe(concat('app.js'))
         .pipe(gulp.dest(path.join(__dirname,'/dist/js')));
+});
+gulp.task('browserify',function(){
+    console.log('In the browserify task',path.join(__dirname,'/dist/js'));
+    return gulp.src(path.join(__dirname,'/js/invoiceManager.js'))
+    .pipe(browserify().transform("babelify", {extensions: [".babel"]}))
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest(path.join(__dirname,'/dist/js')));
 });
 gulp.task('connect',function(){
     connect.server({
@@ -46,4 +57,5 @@ gulp.task('watch',function(){
     gulp.watch(path.join(__dirname,'/scss/**/*.scss'),['sass']);
     gulp.watch([path.join(__dirname,'/js/**/*.js'),path.join(__dirname,'/components/**/*.js')],['cleanJsFiles','combineAppJs']);
 });
-gulp.task('default',['testGulp','cleanAppFiles','sass','combineAppJs','connect','watch']);
+//gulp.task('default',['testGulp','cleanAppFiles','sass','combineAppJs','connect','watch']);
+gulp.task('default',['browserify'])
