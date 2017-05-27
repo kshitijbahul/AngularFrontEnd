@@ -46,4 +46,5 @@ gulp.task('watch',function(){
     gulp.watch(path.join(__dirname,'/scss/**/*.scss'),['sass']);
     gulp.watch([path.join(__dirname,'/js/**/*.js'),path.join(__dirname,'/components/**/*.js')],['cleanJsFiles','combineAppJs']);
 });
-gulp.task('default',['testGulp','cleanAppFiles','sass','combineAppJs','connect','watch']);
+gulp.task('default',['testGulp','cleanAppFiles','sass','combineAppJs']);
+gulp.task('local',['testGulp','cleanAppFiles','sass','combineAppJs','connect','watch']);

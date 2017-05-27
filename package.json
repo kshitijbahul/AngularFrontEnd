@@ -37,6 +37,7 @@
     "ui-select": "0.19.8"
   },
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+     "local": "gulp local"
   }
 }
