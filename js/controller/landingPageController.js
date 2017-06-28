@@ -4,83 +4,140 @@
 'use strict';
 var app = angular.module('invoiceManagerApp');
 //const colors = require('js/utils/color');
-app.controller('landingPageController',function($scope,$http,$interval,_){
+app.controller('landingPageController',function($scope,$http,$interval,_,moment,$rootScope){
     $scope.overview ={};
-    /*$scope.processingStates=[
-        {"status":'Pending',"value":1234,"theme":"dark-grey"},
-        {"label":'Pre-Processing',"value":1234,"theme":"dark-blue"},
-        {"label":'Processing',"value":1234,"theme":"dark-orange"},
-        {"label":'Merging',"value":1234,"theme":"dark-purple"},
-        {"label":'Ready',"value":1234,"theme":"dark-green"},
-        {"label":'Failed',"value":1234,"theme":"dark-red"}
-    ];*/
+    var dayStart = moment().hour(0).minute(0).second(0);
+    var dayEnd = moment().hour(23).minute(59).second(59);
+    $scope.totalInvoices =0;
+    $scope.overviewCount = 0;
+    $scope.locationOverview ={
+            data: [],
+            labels : [],
+            options: {legend: {display: true}}
+        };
+    $scope.brandOverview = {
+        data: [],
+        labels : []
+    };
+    
     $scope.possibleOverviews = [
         {
             "name":"Today",
+            "valueFrom" :dayStart,
+            "valueTo" :dayEnd
         },
         {
-            "name":"Last Hour"
+            "name":"Last Hour",
+            "valueFrom" :moment().subtract(1,'hours'),
+            "valueTo" :moment()
         },
         {
-            "name":"Yesterday"
+            "name":"Yesterday",
+            "valueFrom" :moment().hour(0).minute(0).second(0).subtract(1,'days'),
+            "valueTo" : moment().hour(23).minute(59).second(59).subtract(1,'days')
         },
         {
-            "name":"This Week"
+            "name":"This Week",
+            "valueFrom" :moment().hour(0).minute(0).second(0).startOf('week'),
+            "valueTo" :dayEnd
         },
         {
-            "name":"This Fortnight"
+            "name":"This Fortnight",
+            "valueFrom" :moment().hour(0).minute(0).second(0).subtract(14,'days'),
+            "valueTo" :dayEnd
         },
         {
-            "name":"This Month"
+            "name":"This Month",
+            "valueFrom" :moment().hour(0).minute(0).second(0).startOf('month'),
+            "valueTo" :dayEnd
         },
     ]
+    let prepareChartDataForObject = function(chartObject,chartData){
+
+        _.forEach(chartData,function(eachData){
+            chartObject.labels.push(eachData.name)
+            chartObject.data.push(eachData.value)
+        })
+    }
+    let getOverviewDetails = function(item){
+        $http.get(`/dashboard/all`,{params : {fromTime: item.valueFrom.format('YYYY-MM-DD HH:mm:ss'),toTime: item.valueTo.format('YYYY-MM-DD HH:mm:ss')}}).then(
+            
+        function success(result){
+            $scope.overviewCount = result.data.TOTAL[0].value;
+            $scope.locationOverview ={
+                data: [],
+                labels : [],
+                options: {legend: {display: true}}
+            };
+            $scope.brandOverview = {
+                data: [],
+                labels : []
+            };
+            prepareChartDataForObject($scope.brandOverview,result.data.STATUS_BY_BRAND);
+            prepareChartDataForObject($scope.locationOverview,result.data.STATUS_BY_CITY);
+            $rootScope.brands && $rootScope.brands.length && $rootScope.brands.length>0 ? '' : $rootScope.brands = _.cloneDeep($scope.brandOverview.labels);
+        },function error(error){
+            console.log(`in Error ${error}`);
+        });
+    }
     $scope.getStates = function(){
-        /*$http.get('http://192.168.1.198:8888/getStatementCountByStatus').then(
+        let getStateNames = $rootScope.states && $rootScope.states.length ==0 ? true: false
+        $http.get('/dashboard/status').then(
             function success(result){
                 $scope.processingStates = result.data;
-            },function error(error){
-                console.log('Error in response');
-        });*/
-        $http({
-            method : 'GET',
-            url: 'http://192.168.1.198:8888/getStatementCountByStatus',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).then(
-            function success(result){
-                $scope.processingStates = result.data;
+                _.forEach($scope.processingStates,function(eachState){
+                    getStateNames ?(eachState.name==='Total' ? '' :$rootScope.states.push(eachState.name)): '';
+                    if (eachState.name==='PRE-PROCESSING'){
+                        eachState.theme ='dark-blue';
+                    }
+                    if (eachState.name==='MERGING'){
+                        eachState.theme ='dark-purple';
+                    }
+                    if (eachState.name==='FAILED'){
+                        eachState.theme ='dark-red';
+                    }
+                    if (eachState.name==='READY'){
+                        eachState.theme ='dark-green';
+                    }
+                    if (eachState.name==='PROCESSING'){
+                        eachState.theme ='dark-orange';
+                    }
+                    if (eachState.name==='PENDING'){
+                        eachState.theme ='dark-grey';
+                    }
+                    if (eachState.name==='Total'){
+                        $scope.totalInvoices =eachState.value;
+                    }
+                    //$scope.totalInvoices = $scope.totalInvoices + eachState.count;
+                    eachState.label = _.capitalize(_.camelCase(eachState.name));
+                    return eachState;
+                })
             },function error(error){
                 console.log('Error in response');
         });
     }
+    
     $scope.init = function(){
-  //      console.log('colors here are ::',colors);
         $scope.colors = ['#FF5500', '#A1D490','#00ADF9','#D792E8','#2B66B3'];
-        $scope.name='Kshitij';
+        $rootScope.brands =[];
+        $rootScope.states =[];
         $scope.getStates();
-        $scope.processingInvoicesChart ={
-            data: [90,40,30,10,20],
-            labels : ['Oslo','Bergen','Stavanger','Flekkefjord','Farsund'],
-            options: {legend: {display: true}}
-        };
-        $scope.processedInvoicesChartLabels = ['Processed','Total'];
-        //$scope.divisionsByBrandChart =[90,10];
-        $scope.divisionsByBrandChart = {
-            data: [50,30,60,45,24],
-            labels : ['FKAS','TKAS','BKK','FKAS','FKAS']
-        };
-        $scope.divisionsByBrandChartLabels = ['Processed','Total'];
-        $scope.divisionsByLocationChart =[90,10];
-        $scope.divisionsByLocationLabels = ['Processed','Total'];
-        $scope.overview.selected = $scope.possibleOverviews[0];
+        
+        $scope.overview.selected = $scope.possibleOverviews[5];
+        getOverviewDetails($scope.overview.selected);
     }
     
+    $scope.onOverviewSelect = function(item,model){
+        console.log(item,model);
+        getOverviewDetails(item);
+    }
     $scope.testValueChange = 5400;
-    $interval(function(){
+    let refreshDashbord=$interval(function(){
         console.log('Came in here $interval',$scope.testValueChange);
-        $scope.testValueChange = $scope.testValueChange+3;
-        // _.forEach($scope.processingStates, function(eachState){
-        //     return eachState.value=eachState.value+3;
-        // });
         $scope.getStates();
-    },10000)
+    },5000)
+    $scope.$on('$destroy', function () { 
+        console.log('Came in here $destroy');
+        $interval.cancel(refreshDashbord)
+    });
 });

@@ -1,0 +1,17 @@
+.manage-brands{
+  .icon-align{
+    margin-top: 10px;
+    &:focus{
+      outline: none;
+    }
+  }
+  .table-align{
+    th,tr,td{
+      text-align: center;
+      outline: none;
+    }
+    tr.active td{
+      background: skyblue;
+    }
+  }
+}

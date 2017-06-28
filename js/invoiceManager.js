@@ -2,16 +2,23 @@
  * Created by Kshitij Bahul on 16-05-2017.
  */
 'use strict';
-/*angular.module('ui.odometer').config([
-    'odometerOptionsProvider', function(odometerOptionsProvider) {
-        odometerOptionsProvider.defaults = {
-            duration : 3000,
-            theme    : 'car',
-            animation: 'count'
-        };
-    }
-]);*/
-var invoiceManager = angular.module('invoiceManagerApp',['ui.router','ui.bootstrap','chart.js','ui.odometer','ngMaterial','ui.select','ngSanitize']);
+
+let dependencies = [
+        'ui.router',
+        'ui.bootstrap',
+        'chart.js',
+        'ui.odometer',
+        'ngMaterial',
+        'ui.select',
+        'ngSanitize',
+        'angularMoment',
+        'smart-table',
+        'ngFlatDatepicker',
+        'angularModalService'
+        // 'angular.circular.timepicker'
+    ];
+
+var invoiceManager = angular.module('invoiceManagerApp',dependencies);
 
 //Configure Global Constants 
 invoiceManager.constant('_',window._);
@@ -26,8 +33,24 @@ invoiceManager.config(function($stateProvider,$urlRouterProvider){
         })
         .state('overview',{
             url: '/overview',
-            templateUrl: 'templates/overview.html'
-        });
+            templateUrl: 'templates/drill-down.html',
+            params : {
+                processingState : null,
+                dates : null
+            }
+        }).state('listBrands',{
+        url: '/brands',
+        templateUrl: 'js/brands/brands.html'
+      }).state('listGrid',{
+        url: '/grids',
+        templateUrl: 'js/grids/grid.html'
+      }).state('templates',{
+        url: '/templates',
+        templateUrl: 'js/templates/list.html'
+      }).state('state_config',{
+        url: '/state_config',
+        templateUrl: 'js/stateConfig/stateConfig.html'
+      });
     $urlRouterProvider.otherwise('/home');
 });
 
@@ -41,4 +64,5 @@ invoiceManager.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('dark-green').backgroundPalette('green').dark();
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
+
 

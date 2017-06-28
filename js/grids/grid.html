@@ -1,0 +1,50 @@
+<div class="manage-brands" ng-controller="GridsController" ng-init="getGrids()">
+    <div class="col-md-6">
+        <div class="row form-group">
+            <label class="control-label col-md-2">Grid</label>
+            <div class="col-md-6">
+                <ui-select multiple ng-model="selectedGrids" theme="bootstrap" title="Choose Grid" on-remove="onGridRemoval($item, $model)"on-select="onGridSelect($item, $model)">
+                    <ui-select-match placeholder="Select Filter">{{$item}}</ui-select-match>
+                    <ui-select-choices refresh="syncCall()" refresh-delay="10" repeat="eachBrand in brands" position='down'>
+                        <div ng-bind-html="eachBrand | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table st-table="displayedCollection" st-safe-src="allGrids" class="table table-align">
+            <thead>
+            <tr>
+                <th st-sort="Brand">Brand</th>
+                <th>E-mail Address</th>
+                <th >Phone No</th>
+                <th width="40px"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="gridItem in displayedCollection" ng-click="updateGrid(gridItem);">
+                    <td>{{gridItem.brand}}</td>
+                    <td>{{gridItem.email}}</td>
+                    <td>{{gridItem.phone}}</td>
+                    <td ng-click="deleteGrid(gridItem, $event)"><i class="fa fa-trash-o redIcon"></i></td>
+                </tr>
+            </tbody>
+            <tfoot>
+            <!--<tr>-->
+                <!--<td colspan="100%" class="text-center">-->
+                    <!--<paginator page-size=pageSize total-pages=totalPages on-page-change="onPageChanged(result)"></paginator>-->
+                <!--</td>-->
+            <!--</tr>-->
+                <tr>
+                    <td colspan="100%" class="text-center">
+                        <div st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+                    </td>
+			    </tr>
+            </tfoot>
+        </table>
+        <div class="text-right">
+            <button ng-click="addGrid()" class="btn btn-primary">Add Grid</button><!-- modal opens upon clicking of add brand -->
+        </div>
+    </div>
+</div>
